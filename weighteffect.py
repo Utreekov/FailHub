@@ -70,7 +70,7 @@ def magic(command):
     #4=Corruption
     dwarf_magic = [0, 0, 0, 0, 0]
 
-    if(command == 'read dark tome'):#Boom, long slippery slope baby...
+    if(command == 'read' and dwarf_magic[3] == 0):#Boom, long slippery slope baby...
         print("""As you brush the dust from the cover of the dark tome,
 a chill runs up your arm. A glance down reveals the title,
 'Meditations on the Unseen Worlds'. You slowly open the 
@@ -107,7 +107,11 @@ work. """)
                 print("You think your Concentration is average.")
             else:
                 print("You think your Concentration is great!") 
-
+    elif(command == 'read' and dwarf_magic[3] > 0):
+            print("You light a candle and begin to pour over the tome, searching for more secrets...")
+            mod = random.randint(1, 5)
+            stat_modder(dwarf_magic, mod, (dwarf_magic[mod] + 1), 3)
+            stat_modder(dwarf_magic, 4, (dwarf_magic[4] + 1), 3)
 
 def shop_commands():#Lists all the commands for the shopping loop.
         print("\nList of commands:",
